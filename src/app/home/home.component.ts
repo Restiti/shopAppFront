@@ -1,16 +1,15 @@
-import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
+import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
-import { Product } from './Product';
-import { ProductService } from './service/home.service';
+import { ProductService } from '../service/home.service';
+import { Product } from '../Product';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-home',
+  templateUrl: './home.component.html',
+  styleUrls: ['./home.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'Mon shop';
-  
+export class HomeComponent implements OnInit {
+
   public products: Product[] = [];
 
   constructor(private productService: ProductService){}
@@ -28,5 +27,4 @@ export class AppComponent implements OnInit {
       }
     })
   }
-
 }

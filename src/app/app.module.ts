@@ -6,20 +6,36 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { ProductService } from './product.service';
+import { ProductService } from './service/home.service';
 import { ProduitDetailsComponent } from './produit-details/produit-details.component';
+import { RouterModule, RouterOutlet, Routes } from '@angular/router';
+import { ProductControlComponent } from './product-control/product-control.component';
+import { HomeComponent } from './home/home.component';
+
+
+const routes: Routes = [
+  { path: 'product/:id', component: ProduitDetailsComponent },
+  { path: "", component: HomeComponent},
+  { path: "admin", component: ProductControlComponent}
+
+];
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProduitDetailsComponent
+    ProduitDetailsComponent,
+    ProductControlComponent,
+    HomeComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
+  exports: [RouterModule]
+  ,
   providers: [ProductService],
   bootstrap: [AppComponent]
 })
